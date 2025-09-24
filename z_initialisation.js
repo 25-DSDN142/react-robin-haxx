@@ -256,6 +256,64 @@ function detectHandGesture(hand) {
   return null;
 }
 
+// function countFingers(hand) {
+//   if (!hand || hand.confidence < 0.7) return 0;
+  
+//   let count = 0;
+  
+//   // Check thumb - more robust detection
+//   // For thumb, we need to check if it's extended away from the palm
+//   let thumbTip = hand.thumb_tip;
+//   let thumbMcp = hand.thumb_mcp;
+//   let indexMcp = hand.index_finger_mcp;
+  
+//   // Calculate if thumb is extended by checking distance from palm
+//   let thumbExtended = dist(thumbTip.x, thumbTip.y, indexMcp.x, indexMcp.y) > 
+//                       dist(thumbMcp.x, thumbMcp.y, indexMcp.x, indexMcp.y) * 1.3;
+  
+//   // Also check vertical position for additional verification
+//   let thumbUp = thumbTip.y < thumbMcp.y - 20;
+  
+//   if (thumbExtended && thumbUp) count++;
+  
+//   // Check other fingers - these work well with vertical comparison
+//   // Index finger
+//   let indexUp = hand.index_finger_tip.y < hand.index_finger_pip.y - 15;
+//   if (indexUp) count++;
+  
+//   // Middle finger
+//   let middleUp = hand.middle_finger_tip.y < hand.middle_finger_pip.y - 15;
+//   if (middleUp) count++;
+  
+//   // Ring finger
+//   let ringUp = hand.ring_finger_tip.y < hand.ring_finger_pip.y - 15;
+//   if (ringUp) count++;
+  
+//   // Pinky finger
+//   let pinkyUp = hand.pinky_finger_tip.y < hand.pinky_finger_pip.y - 15;
+//   if (pinkyUp) count++;
+  
+//   return count;
+// }
+
+// Māori numbers
+function getMaoriNumber(num) {
+  const maoriNumbers = {
+    0: "kore",
+    1: "tahi",
+    2: "rua",
+    3: "toru",
+    4: "whā",
+    5: "rima",
+    6: "ono",
+    7: "whitu",
+    8: "waru",
+    9: "iwa",
+    10: "tekau"
+  };
+  return maoriNumbers[num] || "";
+}
+
 // Simple face expression detection
 function detectFaceExpression(face) {
   if (!face) return null;
